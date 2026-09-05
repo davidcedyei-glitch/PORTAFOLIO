@@ -21,7 +21,7 @@ const DASHBOARDS = [
     id: "usa-map",
     title: "Dashboard: USA",
     tool: "tableau",
-    url: "https://public.tableau.com/app/profile/yeison.cedeno/viz/Prueba1_17886357159990/Dashboard1",
+    url: "https://public.tableau.com/views/Prueba1_17886357159990/Dashboard1?:showVizHome=no",
     description: "Mapa interactivo con indicadores por estado.",
     demo: "mapa"
   },
