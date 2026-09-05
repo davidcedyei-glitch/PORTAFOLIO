@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dan Contreras — Portal de Business Intelligence</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Ventana de navegador simulada -->
+<div class="browser-frame">
+  <!-- Barra superior -->
+  <div class="browser-bar">
+    <span class="dot dot-red"></span>
+    <span class="dot dot-yellow"></span>
+    <span class="dot dot-green"></span>
+    <div class="browser-address" id="address">dancontreras.dev/bi-portal</div>
+  </div>
+
+  <div class="layout">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar">DC</div>
+        <div class="profile-text">
+          <h1>Dan Contreras</h1>
+          <p>CEO A2 Capacitación · BI Portal</p>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a href="#" data-section="home" class="menu-link">🏠 Inicio</a>
+
+        <button class="menu-link menu-toggle" id="dashboards-toggle">📊 Dashboards</button>
+        <ul class="submenu open" id="dashboards-submenu">
+          <li><a href="#" class="filter-link" data-filter="all">Todos</a></li>
+          <li><a href="#" class="filter-link" data-filter="tableau">Tableau</a></li>
+          <li><a href="#" class="filter-link" data-filter="powerbi">Power BI</a></li>
+        </ul>
+
+        <a href="#" data-section="resources" class="menu-link">📚 Recursos</a>
+        <a href="#" data-section="about" class="menu-link">👤 Acerca de mí</a>
+        <a href="#" data-section="contact" class="menu-link">✉️ Contacto</a>
+      </nav>
+    </aside>
+
+    <!-- ============ CONTENIDO ============ -->
+    <main class="content">
+
+      <!-- INICIO -->
+      <section class="panel active" id="panel-home">
+        <h2>Portal de Business Intelligence</h2>
+        <p>
+          Bienvenido a mi portal de analítica. Aquí encontrarás todos mis
+          dashboards interactivos de <strong>Tableau</strong> y <strong>Power BI</strong>,
+          junto con recursos gratuitos para aprender análisis de datos.
+        </p>
+        <div class="stats">
+          <div class="stat-card">
+            <span class="stat-number" id="stat-total">0</span>
+            <span class="stat-label">Dashboards</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="stat-tableau">0</span>
+            <span class="stat-label">Tableau</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="stat-powerbi">0</span>
+            <span class="stat-label">Power BI</span>
+          </div>
+        </div>
+        <button class="btn" id="go-dashboards">Explorar dashboards →</button>
+      </section>
+
+      <!-- DASHBOARDS -->
+      <section class="panel" id="panel-dashboards">
+        <div class="panel-header">
+          <h2>Dashboards</h2>
+          <div class="chips" id="chips">
+            <button class="chip active" data-filter="all">Todos</button>
+            <button class="chip" data-filter="tableau">Tableau</button>
+            <button class="chip" data-filter="powerbi">Power BI</button>
+          </div>
+        </div>
+        <div class="cards-grid" id="cards-grid"></div>
+      </section>
+
+      <!-- VISOR DE DASHBOARD (iframe embebido) -->
+      <section class="panel" id="panel-viewer">
+        <div class="panel-header">
+          <button class="btn btn-small" id="back-btn">← Volver</button>
+          <h2 id="viewer-title">Dashboard</h2>
+        </div>
+        <div class="viewer-container" id="viewer-container"></div>
+      </section>
+
+      <!-- RECURSOS -->
+      <section class="panel" id="panel-resources">
+        <h2>Recursos gratuitos</h2>
+        <p class="hint">Materiales para aprender Business Intelligence.</p>
+        <ul class="resource-list">
+          <li><span>📘</span><div><strong>Guía de DAX para principiantes</strong><p>Funciones esenciales de Power BI explicadas paso a paso.</p></div></li>
+          <li><span>📊</span><div><strong>Plantillas de dashboards en Excel</strong><p>5 plantillas listas para conectar a tus datos.</p></div></li>
+          <li><span>🗺️</span><div><strong>Dataset geográfico de EE.UU.</strong><p>Para practicar mapas en Tableau Public.</p></div></li>
+          <li><span>🎥</span><div><strong>Curso: SQL desde cero</strong><p>Consultas para analistas, con ejercicios reales.</p></div></li>
+          <li><span>📗</span><div><strong>Manual de Tableau Public</strong><p>Publica tu primer dashboard en 30 minutos.</p></div></li>
+        </ul>
+      </section>
+
+      <!-- ACERCA DE MÍ -->
+      <section class="panel" id="panel-about">
+        <h2>Acerca de mí</h2>
+        <p>
+          Soy analista de datos y fundador de A2 Capacitación. Me especializo en
+          transformar datos en decisiones: dashboards interactivos, modelos
+          predictivos y visualización geográfica con Tableau y Power BI.
+        </p>
+        <div class="tags">
+          <span>Power BI</span><span>Tableau</span><span>SQL</span>
+          <span>DAX</span><span>Python</span><span>Excel avanzado</span>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section class="panel" id="panel-contact">
+        <h2>Contacto</h2>
+        <p class="hint">¿Necesitas un dashboard o capacitación para tu equipo? Escríbeme.</p>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('¡Mensaje enviado! Gracias por contactarme.');">
+          <input type="text" placeholder="Tu nombre" required>
+          <input type="email" placeholder="Tu correo" required>
+          <textarea placeholder="Cuéntame tu proyecto" rows="4" required></textarea>
+          <button type="submit" class="btn">Enviar mensaje</button>
+        </form>
+        <div class="socials">
+          <a href="#">LinkedIn</a> · <a href="#">GitHub</a> · <a href="#">YouTube</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="dashboards.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
