@@ -54,6 +54,8 @@ const filterLinks = document.querySelectorAll('.filter-link');
 const viewerTitle = document.getElementById('viewer-title');
 const viewerContainer = document.getElementById('viewer-container');
 const address = document.getElementById('address');
+const excelInput = document.getElementById('excel-input');
+const excelList = document.getElementById('excel-list');
 
 let currentFilter = 'all';
 
@@ -147,6 +149,50 @@ function openDashboard(d) {
 }
 
 document.getElementById('back-btn').addEventListener('click', () => showPanel('dashboards'));
+
+// ---------- Archivos Excel ----------
+function readExcelFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = event => {
+      try {
+        const workbook = XLSX.read(event.target.result, { type: 'array' });
+        resolve(workbook.SheetNames);
+      } catch (error) {
+        reject(error);
+      }
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+excelInput.addEventListener('change', async () => {
+  if (!excelInput.files.length) return;
+
+  excelList.innerHTML = '<p class="empty-state">Leyendo archivos...</p>';
+  const results = await Promise.all([...excelInput.files].map(async file => {
+    try {
+      const sheets = await readExcelFile(file);
+      return { file, sheets };
+    } catch {
+      return { file, sheets: null };
+    }
+  }));
+
+  excelList.innerHTML = results.map(({ file, sheets }) => `
+    <article class="excel-item">
+      <strong>📄 ${file.name}</strong>
+      <span>${formatFileSize(file.size)}</span>
+      <p>${sheets ? `Hojas: ${sheets.join(', ')}` : 'No se pudo leer este archivo.'}</p>
+    </article>`).join('');
+});
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
 
 // ---------- Estadísticas del inicio ----------
 function renderStats() {

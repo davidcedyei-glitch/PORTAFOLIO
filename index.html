@@ -15,7 +15,7 @@
     <span class="dot dot-red"></span>
     <span class="dot dot-yellow"></span>
     <span class="dot dot-green"></span>
-    <div class="browser-address" id="address">dancontreras.dev/bi-portal</div>
+    <div class="browser-address" id="address">Yeison_Cedeño</div>
   </div>
 
   <div class="layout">
@@ -23,10 +23,10 @@
     <!-- ============ SIDEBAR ============ -->
     <aside class="sidebar">
       <div class="profile">
-        <div class="avatar">DC</div>
+        <div class="avatar">YC</div>
         <div class="profile-text">
-          <h1>Dan Contreras</h1>
-          <p>CEO A2 Capacitación · BI Portal</p>
+          <h1>Yeison Cedeño</h1>
+          <p>Analista de Datos · BI Portal</p>
         </div>
       </div>
 
@@ -39,6 +39,7 @@
           <li><a href="#" class="filter-link" data-filter="tableau">Tableau</a></li>
           <li><a href="#" class="filter-link" data-filter="powerbi">Power BI</a></li>
         </ul>
+        <a href="#" data-section="excel" class="menu-link">📁 Archivos Excel</a>
 
         <a href="#" data-section="resources" class="menu-link">📚 Recursos</a>
         <a href="#" data-section="about" class="menu-link">👤 Acerca de mí</a>
@@ -96,6 +97,20 @@
         <div class="viewer-container" id="viewer-container"></div>
       </section>
 
+      <!-- ARCHIVOS EXCEL -->
+      <section class="panel" id="panel-excel">
+        <h2>Archivos Excel</h2>
+        <p class="hint">Carga archivos .xlsx o .xls para consultar sus hojas directamente en este navegador.</p>
+        <div class="upload-box">
+          <label class="upload-label" for="excel-input">📤 Seleccionar archivos Excel</label>
+          <input type="file" id="excel-input" accept=".xlsx,.xls" multiple>
+          <p class="upload-note">Los archivos se procesan localmente y no se guardan al cerrar o recargar la página.</p>
+        </div>
+        <div id="excel-list" class="excel-list" aria-live="polite">
+          <p class="empty-state">Todavía no has seleccionado ningún archivo.</p>
+        </div>
+      </section>
+
       <!-- RECURSOS -->
       <section class="panel" id="panel-resources">
         <h2>Recursos gratuitos</h2>
@@ -142,6 +157,7 @@
   </div>
 </div>
 
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 <script src="dashboards.js"></script>
 <script src="script.js"></script>
 </body>

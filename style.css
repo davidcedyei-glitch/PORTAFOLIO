@@ -287,6 +287,45 @@ body {
   color: var(--teal-mid);
 }
 
+/* ===== Carga de archivos Excel ===== */
+.upload-box {
+  max-width: 640px;
+  padding: 26px;
+  border: 1px dashed #9ec6c3;
+  border-radius: 12px;
+  background: #f7fbfb;
+  text-align: center;
+}
+
+.upload-label {
+  display: inline-block;
+  background: var(--teal-mid);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.upload-label:hover { background: var(--teal-dark); }
+.upload-box input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.upload-note { margin: 12px auto 0; color: var(--text-light); font-size: 12px; }
+.excel-list { max-width: 640px; margin-top: 20px; }
+.empty-state { color: var(--text-light); font-size: 14px; }
+.excel-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 16px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+}
+.excel-item strong { color: var(--teal-dark); }
+.excel-item span { color: var(--text-light); font-size: 12px; }
+.excel-item p { grid-column: 1 / -1; color: var(--text-light); font-size: 13px; }
+
 /* ===== Recursos ===== */
 .resource-list { list-style: none; max-width: 640px; }
 .resource-list li {
